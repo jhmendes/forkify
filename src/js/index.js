@@ -9,8 +9,6 @@ import * as likesView from './views/likesView';
 import {elements, renderLoader, clearLoader} from './views/base';
 
 
-
-
 //API KEY for food2fork 33321ee2df8b9bd14d62e171ce07d7de
 //http://food2fork.com/api/search 
 
@@ -22,10 +20,10 @@ import {elements, renderLoader, clearLoader} from './views/base';
 - Liked recipes
 
 **/
-const state = {
-}
 
-window.state = state;
+const state = {};
+
+
 
 /* SEARCH CONTROLLER */
 
@@ -33,7 +31,6 @@ const controlSearch =  async () => {
     //1. get the query from the view
      const query = searchView.getInput(); 
 
-    
     //2. Create new search object
     
     if (query) {
@@ -67,7 +64,6 @@ elements.searchForm.addEventListener('submit', e => {
 });
 
 
-
 elements.searchResPages.addEventListener('click', e => {
     const btn = e.target.closest('.btn-inline');
     if (btn) {
@@ -85,9 +81,7 @@ const controlRecipe = async () => {
 
     //Get ID from URL
     const id = window.location.hash.replace('#', '');
-    console.log(id);
-
-
+   
     if (id) {
         //Prepare the UI for changes
         recipeView.clearRecipe();
@@ -100,8 +94,6 @@ const controlRecipe = async () => {
         }
         //Create new recipe object
             state.recipe = new Recipe(id);
-
-        
 
             try {
                 
@@ -153,7 +145,6 @@ elements.shopping.addEventListener('click', e => {
         //delete from ui
         listView.deleteItem(id);
 
-
         //handle count update
     } else if (e.target.matches('.shopping__count-value')) {
         const val = parseFloat(e.target.value, 10);
@@ -183,8 +174,6 @@ const controlLike = () => {
         //add like to UI list
         likesView.renderLike(newLike);
         
-
-
         //user HAS liked current recipe
     } else {
 
@@ -195,7 +184,6 @@ const controlLike = () => {
         likesView.toggleLikeBtn(false);
         //remove like to UI 
         likesView.deleteLike(currentID);
-       
     }
     likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
