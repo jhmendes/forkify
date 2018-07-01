@@ -16,7 +16,7 @@ export const highlightSelected = id => {
     resultsArr.forEach(el => {
         el.classList.remove('results__link--active');
     });
-    document.querySelector(`a[href='#${id}']`).classList.add('results__link--active');
+    document.querySelector(`.results__link[href*="${id}"]`).classList.add('results__link--active');
 }
 
 //'Pasta with tomato and spinach' > turns to array with each word
@@ -28,7 +28,7 @@ acc: 15 / acc + cur.length = 18;  ['Pasta', 'With', 'Tomato']
 acc: 18 / acc + cur.length = 18;  ['Pasta', 'With', 'Tomato'] -program stops here
 
 */
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => { 
     const newTitle = [];
  if (title.length > limit) {
 
